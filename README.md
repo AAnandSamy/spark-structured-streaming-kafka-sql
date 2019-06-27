@@ -51,6 +51,6 @@ We apply interactive SQL query to form DF
              .outputMode("complete")
              .format("memory")
              .start()
-           stdfk.awaitTermination()
-  spark.sql("select deviceName,IMEI-number,device-location from stream_tble").show(false)`
+           stdfk.awaitTermination()`
+  `spark.sql("select deviceName,IMEI-number,device-location from stream_tble").show(false)`
       
