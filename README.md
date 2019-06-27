@@ -41,7 +41,7 @@ Once data has been projected then we can apply our SQL operation( filter conditi
          .select(from_json($"value", json_schema) as "data")
          .select("data.*")`
          
-##### Streaming write Df to - [ console/kafka/file/inMemory ]
+##### Streaming write Df to - [ console/kafka/file/Hive/inMemory ]
 
 We apply interactive SQL query to form DF
 
