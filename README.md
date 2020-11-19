@@ -27,7 +27,8 @@ spark-sql-kafka supports to run SQL query over the topics read and write.
 
 ##### Read from kafka
 
-```scala val ksDf = spark
+```scala 
+val ksDf = spark
          .readStream
          .format("kafka")
          .options(kafkaConsumerMap)
@@ -37,7 +38,8 @@ spark-sql-kafka supports to run SQL query over the topics read and write.
 
 Once data has been projected then we can apply our SQL operation( filter condition, aggregation ...)
 
-```scala val stDF=ksDf
+```scala 
+val stDF=ksDf
          .selectExpr("CAST(value AS STRING)")
          .select(from_json($"value", json_schema) as "data")
          .select("data.*")
@@ -47,13 +49,15 @@ Once data has been projected then we can apply our SQL operation( filter conditi
 
 We apply interactive SQL query to form DF
 
-```scala val stdfk=stDF
+```scala 
+val stdfk=stDF
              .writeStream
              .queryName("stream_tble")
              .outputMode("complete")
              .format("memory")
              .start()
-           stdfk.awaitTermination()                                                           
+           stdfk.awaitTermination()      
+           
   spark.sql("select deviceName,IMEI-number,device-location from stream_tble").show(false)
 ```
       
