@@ -31,7 +31,8 @@ spark-sql-kafka supports to run SQL query over the topics read and write.
          .readStream
          .format("kafka")
          .options(kafkaConsumerMap)
-         .load()```
+         .load()
+ ```
 ##### Convert JSON string to DF with typed JSON schema
 
 Once data has been projected then we can apply our SQL operation( filter condition, aggregation ...)
@@ -39,7 +40,8 @@ Once data has been projected then we can apply our SQL operation( filter conditi
 ```scala val stDF=ksDf
          .selectExpr("CAST(value AS STRING)")
          .select(from_json($"value", json_schema) as "data")
-         .select("data.*")```
+         .select("data.*")
+```
          
 ##### Streaming write Df to - [ console/kafka/file/Hive/inMemory ]
 
@@ -52,5 +54,6 @@ We apply interactive SQL query to form DF
              .format("memory")
              .start()
            stdfk.awaitTermination()                                                           
-  spark.sql("select deviceName,IMEI-number,device-location from stream_tble").show(false) ```
+  spark.sql("select deviceName,IMEI-number,device-location from stream_tble").show(false)
+```
       
